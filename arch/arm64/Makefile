@@ -134,6 +134,7 @@ KBUILD_AFLAGS += -DKASAN_SHADOW_SCALE_SHIFT=$(KASAN_SHADOW_SCALE_SHIFT)
 export	TEXT_OFFSET GZFLAGS
 
 core-y		+= arch/arm64/
+core-$(CONFIG_HYPERV) += arch/arm64/hyperv/
 libs-y		:= arch/arm64/lib/ $(libs-y)
 core-$(CONFIG_EFI_STUB) += $(objtree)/drivers/firmware/efi/libstub/lib.a
 
