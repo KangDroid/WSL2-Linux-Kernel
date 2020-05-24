@@ -398,13 +398,12 @@ CONFIG_SHELL := sh
 HOST_LFS_CFLAGS := $(shell getconf LFS_CFLAGS 2>/dev/null)
 HOST_LFS_LDFLAGS := $(shell getconf LFS_LDFLAGS 2>/dev/null)
 HOST_LFS_LIBS := $(shell getconf LFS_LIBS 2>/dev/null)
-
 ifneq ($(LLVM),)
 HOSTCC	= clang
 HOSTCXX	= clang++
 else
-HOSTCC	= gcc
-HOSTCXX	= g++
+HOSTCC = /usr/lib/ccache/gcc
+HOSTCXX = /usr/lib/ccache/g++
 endif
 KBUILD_HOSTCFLAGS   := -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 \
 		-fomit-frame-pointer -std=gnu89 $(HOST_LFS_CFLAGS) \
